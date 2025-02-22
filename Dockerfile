@@ -4,11 +4,11 @@ FROM openjdk:17
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Java source file into the container
-COPY StudentGradeManagement.java .
+# Copy all necessary files to the container
+COPY . .
 
-# Compile the Java file
+# Compile all Java files
 RUN javac StudentGradeManagement.java
 
-# Set the command to run the Java application
+# Set the entry point to run the Java application
 CMD ["java", "StudentGradeManagement"]
