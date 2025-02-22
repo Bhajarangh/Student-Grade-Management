@@ -14,4 +14,4 @@ RUN ls -la /app
 RUN javac /app/StudentGradeManagement.java
 
 # Run the Java application
-CMD ["java", "-cp", "/app", "StudentGradeManagement"]
+CMD ["java", "-cp", "/app", "StudentGradeManagement"] && exit 0
