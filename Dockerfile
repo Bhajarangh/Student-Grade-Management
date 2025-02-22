@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy only Java source files to prevent unnecessary files from being added
 COPY StudentGradeManagement.java .
-COPY Student.java .
 
 # Compile the Java files
 RUN javac StudentGradeManagement.java Student.java
