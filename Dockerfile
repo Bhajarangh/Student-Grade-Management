@@ -4,11 +4,14 @@ FROM openjdk:17
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy all necessary files to the container
-COPY . .
+# Copy all Java source files into the container
+COPY . /app
+
+# List files to debug if necessary
+RUN ls -la /app
 
 # Compile all Java files
-RUN javac StudentGradeManagement.java
+RUN javac /app/StudentGradeManagement.java
 
-# Set the entry point to run the Java application
-CMD ["java", "StudentGradeManagement"]
+# Run the Java application
+CMD ["java", "-cp", "/app", "StudentGradeManagement"]
