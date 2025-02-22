@@ -1,36 +1,22 @@
-import java.util.Scanner;
-
 class Student {
     private String name;
     private int[] marks;
     private double average;
     private String grade;
 
-    public Student(String name, int subjects) {
+    public Student(String name, int[] marks) {
         this.name = name;
-        this.marks = new int[subjects];
+        this.marks = marks;
+        calculateAverageAndGrade();
     }
 
-    public void inputMarks(Scanner sc) {
+    private void calculateAverageAndGrade() {
         int sum = 0;
-        for (int i = 0; i < marks.length; i++) {
-            while (true) {
-                System.out.print("Enter marks for subject " + (i + 1) + ": ");
-                if (sc.hasNextInt()) {
-                    marks[i] = sc.nextInt();
-                    sum += marks[i];
-                    break;
-                } else {
-                    System.out.println("Invalid input. Please enter an integer.");
-                    sc.next(); // Consume invalid input
-                }
-            }
+        for (int mark : marks) {
+            sum += mark;
         }
-        average = (double) sum / marks.length;
-        calculateGrade();
-    }
+        this.average = (double) sum / marks.length;
 
-    private void calculateGrade() {
         if (average >= 90) grade = "A";
         else if (average >= 80) grade = "B";
         else if (average >= 70) grade = "C";
@@ -46,33 +32,21 @@ class Student {
         }
         System.out.printf("\nAverage: %.2f\n", average);
         System.out.println("Grade: " + grade);
+        System.out.println("------------------------");
     }
 }
 
 public class StudentGradeManagement {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of students: ");
-        int numStudents = sc.nextInt();
-        System.out.print("Enter number of subjects: ");
-        int numSubjects = sc.nextInt();
-
-        Student[] students = new Student[numStudents];
-
-        for (int i = 0; i < numStudents; i++) {
-            sc.nextLine(); // Consume newline
-            System.out.print("Enter name of student " + (i + 1) + ": ");
-            String name = sc.nextLine();
-            students[i] = new Student(name, numSubjects);
-            students[i].inputMarks(sc);
-        }
+        // Predefined data (No user input needed)
+        Student[] students = {
+            new Student("Alice", new int[]{85, 90}),
+            new Student("Bob", new int[]{70, 80})
+        };
 
         System.out.println("\n--- Student Results ---");
         for (Student student : students) {
             student.displayDetails();
-            System.out.println("------------------------");
         }
-
-        sc.close();
     }
 }
