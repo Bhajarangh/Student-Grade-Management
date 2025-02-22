@@ -8,7 +8,7 @@ WORKDIR /app
 COPY StudentGradeManagement.java .
 
 # Compile the Java files
-RUN javac StudentGradeManagement.java Student.java
+RUN javac StudentGradeManagement.java 
 
 # Run the Java application
 CMD ["java", "StudentGradeManagement"]
