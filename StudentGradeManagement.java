@@ -48,5 +48,11 @@ public class StudentGradeManagement {
         for (Student student : students) {
             student.displayDetails();
         }
+        System.out.println("Application running... Press Ctrl + C to stop.");
+        try {
+            Thread.sleep(Long.MAX_VALUE);
+        } catch (InterruptedException e) {
+            System.out.println("Application stopped.");
+        }
     }
 }
